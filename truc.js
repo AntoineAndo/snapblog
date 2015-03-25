@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT * from article', function(err, rows, fields) {
+connection.query('SELECT titleArticle from article', function(err, rows, fields) {
   if (!err)
     console.log('Connection réussie', rows);
   else

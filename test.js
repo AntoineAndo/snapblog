@@ -13,5 +13,9 @@ app.use(session({secret: 'todotopsecret'}))
     res.render('todo.ejs', {todolist: req.session.todolist});
 })
 
+.post('/', function(req, res) {
+    res.send('Username: ' + req.body.username);
+})
+
 .listen(8080);
 
