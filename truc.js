@@ -1,18 +1,20 @@
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'snapblog'
-});
+/*var date = new Date();
+console.log(date);
 
-connection.connect();
 
-connection.query('SELECT titleArticle from article', function(err, rows, fields) {
-  if (!err)
-    console.log('Connection réussie', rows);
-  else
-    console.log('Problème');
-});
 
-connection.end();
+date.addHours = function(expCountdown){
+    this.setHours(this.getMonth()+expCountdown)
+    return this;
+};
+var expDate = date.addHours(5);
+console.log(expDate);*/
+
+
+var expCountdown = 5;
+var date = new Date();
+console.log(date);
+date.setHours(date.getHours()+expCountdown);
+console.log(date);
+
+
