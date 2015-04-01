@@ -14,7 +14,7 @@ var insertPost = function (title,content,checkDate,expDate,expCountdown,callback
 	if(checkDate == 'date')
 	{
 		var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-		expDate = new Date(expDate.replace(pattern,'$3-$2-$1'));
+		expDate = new Date(expDate.replace(pattern,'$3-$1-$2'));
 		expDate.setHours(0);
 		expDate.setMinutes(0);
 		expDate.setSeconds(0);
