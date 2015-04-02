@@ -1,5 +1,6 @@
 
-var mysql      = require('mysql');
+var mysql = require('mysql');
+var func = require("../functions");
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -7,9 +8,11 @@ var connection = mysql.createConnection({
   database : 'snapblog'
 });
 
-var insertPost = function (title,content,checkDate,expDate,expCountdown,callback){  
+var insertPost = function (title,content,checkDate,expDate,expCountdown,idArticle, callback){  
 		var date = new Date();
 		console.log(date);
+
+		content = func.nl2br(content);
 
 	if(checkDate == 'date')
 	{
@@ -30,9 +33,9 @@ var insertPost = function (title,content,checkDate,expDate,expCountdown,callback
 
 	expDate = expDate.getFullYear() + "-" + (expDate.getMonth()+1) + "-" + expDate.getDate()+ " " +expDate.getHours() + ":" + expDate.getMinutes() + ":" + expDate.getSeconds();
 
-	console.log(title, content, checkDate, expDate, expCountdown);
+	console.log(title, content, checkDate, expDate, expCountdown, idArticle);
 
-	query = connection.query('INSERT INTO articles (title, content, expirationDate) VALUES ("'+title+'","'+content+'","'+expDate+'")', function res(err) {
+	query = connection.query('INSERT INTO articles (title, content, expirationDate, idArticle) VALUES ("'+title+'","'+content+'","'+expDate+'","'+idArticle+'")', function res(err) {
 
 		if(err)
 		{
@@ -46,4 +49,33 @@ var insertPost = function (title,content,checkDate,expDate,expCountdown,callback
   
 };
 
+
+var checkUrl = function (urlToCheck, callback){  
+	console.log("URLTOCHECK: " + urlToCheck);
+	query = connection.query('SELECT idArticle FROM articles WHERE idArticle = "' + urlToCheck + '"', function res(err, rows) {	
+		if (rows){
+    		callback(rows[0]);
+		}
+		else
+		{
+			callback (null);
+		}
+    
+  });
+  
+};
+
+var getArticle = function (idArticle, callback){  
+	console.log("ID: " + idArticle);
+	query = connection.query('SELECT * FROM articles WHERE idArticle = "' + idArticle + '"', function res(err, rows) {	
+		if (rows){
+    		callback(rows[0]);
+		}
+    
+  });
+  
+};
+
+exports.getArticle = getArticle;
+exports.checkUrl = checkUrl;
 exports.insertPost = insertPost;
