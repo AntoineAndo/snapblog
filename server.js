@@ -24,10 +24,12 @@ app.use(bodyParser.json())
 	var expDate = req.body.expirationDate;
 	var expCountdown = req.body.expirationCountdown;
 
+	//var key = func.makeid();
+
 	reqmysql.insertPost(title,content,checkDate,expDate,expCountdown, function callback (result){
 		msg="Votre article a été posté";
 		console.log('test');
-		res.render('index.ejs'), {message: msg};
+		res.render('index.ejs', {message: msg});
 
 	});
 })

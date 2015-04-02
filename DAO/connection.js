@@ -25,17 +25,24 @@ var insertPost = function (title,content,checkDate,expDate,expCountdown,callback
     	expDate = date;
 	}
 
+
+//var test = makeid();
+
 	expDate = expDate.getFullYear() + "-" + (expDate.getMonth()+1) + "-" + expDate.getDate()+ " " +expDate.getHours() + ":" + expDate.getMinutes() + ":" + expDate.getSeconds();
 
 	console.log(title, content, checkDate, expDate, expCountdown);
 
-	query = connection.query('INSERT INTO articles (title, content, expirationDate) VALUES ("'+title+'","'+content+'","'+expDate+'")'), function res(err, rows, field) {
-		console.log('test');	
+	query = connection.query('INSERT INTO articles (title, content, expirationDate) VALUES ("'+title+'","'+content+'","'+expDate+'")', function res(err) {
 
-    callback(rows[0]);
-		console.log('test');
-    
-  };
+		if(err)
+		{
+    		callback(err);
+    	}
+    	else
+    	{
+    		callback("it works");
+    	}
+  });
   
 };
 
