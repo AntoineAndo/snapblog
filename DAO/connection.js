@@ -12,8 +12,6 @@ var insertPost = function (title,content,checkDate,expDate,expCountdown,idArticl
 		var date = new Date();
 		console.log(date);
 
-		content = func.nl2br(content);
-
 	if(checkDate == 'date')
 	{
 		var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
@@ -76,6 +74,11 @@ var getArticle = function (idArticle, callback){
   
 };
 
+var deleteArticle = function(idArticle){
+	query = connection.query('DELETE FROM articles WHERE idArticle = "' + idArticle + '"');
+}
+
 exports.getArticle = getArticle;
 exports.checkUrl = checkUrl;
 exports.insertPost = insertPost;
+exports.deleteArticle = deleteArticle;

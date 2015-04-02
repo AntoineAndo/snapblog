@@ -44,16 +44,28 @@ app.use(bodyParser.json())
 		console.log("RESULT: " + result);
 		if(!result)
 		{
+			color="white";
 			msg="Cet article n'existe pas";
-			res.render('index.ejs', {message: msg});
+			res.render('index.ejs', {message: msg, color: color});
 		}
 		else if (result)
 		{
 			reqmysql.getArticle(result.idArticle, function callback(result){
-			var title = result.title;
-			var content = result.content;
-			msg="Cet article existe";
-			res.render('article.ejs', {title: title, content: content});
+				if (result.expirationDate > new Date())
+				{
+					var title = result.title;
+					var content =  result.content;
+					console.log('content : ', content);
+					res.render('article.ejs', {title: title, content: content});
+				}
+				else
+				{
+					reqmysql.deleteArticle(result.idArticle);
+					color="white";
+					console.log(color);
+					msg="Cet article a exipré";
+					res.render('index.ejs', {message: msg, color: color});
+				}
 			});
 		}
 
