@@ -1,26 +1,5 @@
-/*var date = new Date();
-console.log(date);
+		var date = new Date();
+		console.log("DATE:" + date);
+	expDate = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate()+ " " +date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+		console.log("DATE FORMAT:" + expDate);
 
-
-
-date.addHours = function(expCountdown){
-    this.setHours(this.getMonth()+expCountdown)
-    return this;
-};
-var expDate = date.addHours(5);
-console.log(expDate);*/
-
-function makeid()
-{
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for( var i=0; i < 20; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-}
-
-var test = makeid();
-
-console.log(test);

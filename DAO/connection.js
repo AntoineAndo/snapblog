@@ -48,8 +48,7 @@ var insertPost = function (title,content,checkDate,expDate,expCountdown,idArticl
 };
 
 
-var checkUrl = function (urlToCheck, callback){  
-	console.log("URLTOCHECK: " + urlToCheck);
+var checkUrl = function (urlToCheck, callback){ 
 	query = connection.query('SELECT idArticle FROM articles WHERE idArticle = "' + urlToCheck + '"', function res(err, rows) {	
 		if (rows){
     		callback(rows[0]);
