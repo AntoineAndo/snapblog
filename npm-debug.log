@@ -1,0 +1,33 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   './config/fb.js' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json ma-todolist@0.1.0 No description
+6 warn package.json ma-todolist@0.1.0 No repository field.
+7 silly cache add args [ './config/fb.js', null ]
+8 verbose cache add spec ./config/fb.js
+9 silly cache add parsed spec { raw: './config/fb.js',
+9 silly cache add   scope: null,
+9 silly cache add   name: null,
+9 silly cache add   rawSpec: './config/fb.js',
+9 silly cache add   spec: 'C:\\Users\\Robin\\Documents\\GitHub\\snapblog\\config\\fb.js',
+9 silly cache add   type: 'local' }
+10 error addLocal Could not install C:\Users\Robin\Documents\GitHub\snapblog\config\fb.js
+11 verbose stack Error: ENOENT, open 'C:\Users\Robin\Documents\GitHub\snapblog\config\fb.js'
+11 verbose stack     at Error (native)
+12 verbose cwd C:\Users\Robin\Documents\GitHub\snapblog
+13 error Windows_NT 6.3.9600
+14 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "./config/fb.js"
+15 error node v0.12.2
+16 error npm  v2.7.4
+17 error path C:\Users\Robin\Documents\GitHub\snapblog\config\fb.js
+18 error code ENOENT
+19 error errno -4058
+20 error enoent ENOENT, open 'C:\Users\Robin\Documents\GitHub\snapblog\config\fb.js'
+20 error enoent This is most likely not a problem with npm itself
+20 error enoent and is related to npm not being able to find a file.
+21 verbose exit [ -4058, true ]
